@@ -18,7 +18,7 @@ Aplicação feita com o intuíto de criar uma lista de bons costumes ou compromi
 <br>
 
 <p align="center">
-  <img alt="projeto DevLinks" src=".github/preview.jpg" width="100%">
+  <img alt="Projeto Habits" src="./assets/previewHabits.png" width="100%">
 </p>
 
 ## 🚀 Tecnologias
