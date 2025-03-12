@@ -11,7 +11,7 @@ dayjs.locale('pt-br')
 
 export function App() {
   const [ emojiPickerModal, setEmojiPickerModal ] = useState(false)
-  const [ pickerActivityEmoji, setPickerActivityEmoji ] = useState(null)
+  const [ activityDailyEmojisList, setActivityDailyEmojisList] = useState<string[]>([])
 
   const [ checkActivityStatus, setCheckActivityStatus ] = useState(false)
 
@@ -21,10 +21,10 @@ export function App() {
     setEmojiPickerModal((prev) => !prev)
   }
 
-  function HandlePickerActivityEmoji(emojiData) {
-    const activity = emojiData.emoji
+  function HandleActivityDailyEmojisList( emojiData: { emoji: string}) {
+    const activityEmoji = emojiData.emoji
 
-    setPickerActivityEmoji(activity)
+    setActivityDailyEmojisList(prevActivityList => [...prevActivityList, activityEmoji])
 
     HandleEmojiPickerModal()
   }
@@ -57,14 +57,21 @@ export function App() {
           </div>
         </div>
 
-        <div className='flex gap-8'>
-          <div className='mt-12'>
-            <button className='text-4xl'>
-              {pickerActivityEmoji}
-            </button>
+        <div className='flex items-center gap-8'>
+          <div className='mt-12 flex flex-col gap-4'>
+            { activityDailyEmojisList.map((activity, index) => {
+              return (
+                <button
+                  key={index}
+                  className='flex items-center text-4xl'
+                >
+                  {activity}
+                </button>
+              )
+            })}
           </div>
 
-          <div className='flex flex-col gap-3 items-center'>
+          <div className='flex flex-col gap-4 items-center'>
             <span className='font-medium text-2xl text-purple-200 hover:text-purple-100'>
               {formattedDate}
             </span>
@@ -89,7 +96,7 @@ export function App() {
               </button>
 
               <EmojiPicker
-                onEmojiClick={HandlePickerActivityEmoji}
+                onEmojiClick={HandleActivityDailyEmojisList}
                 theme='dark'
               />
             </div>
