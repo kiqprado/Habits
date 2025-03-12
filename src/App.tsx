@@ -15,6 +15,8 @@ export function App() {
 
   const [ checkActivityStatus, setCheckActivityStatus ] = useState(false)
 
+  const formattedDate = dayjs().format('DD/MM')
+
   function HandleEmojiPickerModal() {
     setEmojiPickerModal((prev) => !prev)
   }
@@ -56,13 +58,17 @@ export function App() {
         </div>
 
         <div className='flex gap-8'>
-          <div>
+          <div className='mt-12'>
             <button className='text-4xl'>
               {pickerActivityEmoji}
             </button>
           </div>
 
-          <div>
+          <div className='flex flex-col gap-3 items-center'>
+            <span className='font-medium text-2xl text-purple-200 hover:text-purple-100'>
+              {formattedDate}
+            </span>
+
             <button
               onClick={HandleActivityStatus}
               className={`h-12 w-12  border rounded-xl border-neutral-500 hover:border-neutral-400 
