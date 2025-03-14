@@ -14,7 +14,7 @@ export function App() {
   const [ activityDailyEmojisList, setActivityDailyEmojisList] = useState<string[]>([])
 
   const [ confirmDeleteActivityEmojiModal, setConfirmDeleteActivityEmojiModal ] = useState(false)
-  const [ activityEmojiToRemove, setActivityEmojiToRemove ] = useState<string | null>(null)
+  const [ activityEmojiToRemove, setActivityEmojiToRemove ] = useState<{emoji: string, index: number} | null>(null)
 
   const [ dailyCheckPointActivityList, setDailyCheckPointActivityList ] = useState<boolean[][]>([])
   const [ dailyDatesCheckPoint, setDailyDatesCheckPoint ] = useState<string[]>([])
@@ -35,6 +35,10 @@ export function App() {
 
     setActivityDailyEmojisList(prevActivityList => [...prevActivityList, activityEmoji])
 
+    setDailyCheckPointActivityList((prevCheckListActivities) =>
+      prevCheckListActivities.map((dayCheckPoint) => [...dayCheckPoint, false])
+    )
+
     ToggleEmojiPickerModal()
   }
 
@@ -42,21 +46,35 @@ export function App() {
     setConfirmDeleteActivityEmojiModal((prev) => !prev)
   }
 
-  function HandleSelectedActivityEmojiToDelete( activityEmoji: string) {
-    setActivityEmojiToRemove(activityEmoji)
+  function HandleSelectedActivityEmojiToDelete( activityEmoji: string, index: number) {
+    setActivityEmojiToRemove({ emoji: activityEmoji, index})
     ToggleActivityDeleteEmojiModal()
   }
 
   function HandleDeleteActivityEmoji() {
-    setActivityDailyEmojisList(prevActivityList => prevActivityList.filter(activityEmoji => activityEmoji !== activityEmojiToRemove))
+    if(!activityEmojiToRemove) return
+
+    const { index } = activityEmojiToRemove
+
+    setActivityDailyEmojisList(prevActivityList => 
+      prevActivityList.filter((_, targetEmoji) => targetEmoji !== index))
+
+    setDailyCheckPointActivityList(prevActivityList =>
+      prevActivityList.map(dayCheckPoints => {
+        if (dayCheckPoints.length > 1) {
+          return dayCheckPoints.filter((_, checkPointIndex) => checkPointIndex !== index)
+        }
+        return []
+      })
+    )
 
     setActivityEmojiToRemove(null)
     ToggleActivityDeleteEmojiModal()
   }
 
   function HandleAddNewDailyActivityListCheckPoint() {
-
     if(activityDailyEmojisList.length === 0 ) {
+      alert('Primeiro crie uma lista de atividades.')
       return
     }
 
@@ -116,7 +134,7 @@ export function App() {
               return (
                 <button
                   key={index}
-                  onClick={() => HandleSelectedActivityEmojiToDelete(activity)}
+                  onClick={() => HandleSelectedActivityEmojiToDelete(activity, index)}
                   className='flex items-center text-4xl'
                 >
                   {activity}
