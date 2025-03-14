@@ -28,6 +28,11 @@ export function App() {
   function HandleAddActivityDailyEmojisList( emojiData: { emoji: string}) {
     const activityEmoji = emojiData.emoji
 
+    if(activityDailyEmojisList.includes(activityEmoji)) {
+      alert('Parece que esta atividade já existe em sua lista.')
+      return
+    }
+
     setActivityDailyEmojisList(prevActivityList => [...prevActivityList, activityEmoji])
 
     ToggleEmojiPickerModal()
@@ -50,7 +55,13 @@ export function App() {
   }
 
   function HandleAddNewDailyActivityListCheckPoint() {
+
     if(activityDailyEmojisList.length === 0 ) {
+      return
+    }
+
+    if(dailyDatesCheckPoint.includes(formattedDate)) {
+      alert('Dia já adicionado a lista, você poderá adicionar outro dia amanhã.')
       return
     }
 
@@ -64,12 +75,12 @@ export function App() {
 
   function HandleCheckActivityStatus(dayIndex: number, activityIndex: number) {
     setDailyCheckPointActivityList(prevActivityList =>
-      prevActivityList.map((dayCheckPoint, i) =>
-        i === dayIndex ? 
-          dayCheckPoint.map((checked, index) =>
-          index === activityIndex ? !checked : checked
+      prevActivityList.map((dayCheckPoints, dayPosition) =>
+        dayPosition === dayIndex ? 
+          dayCheckPoints.map((checked, activityStatus) =>
+            activityStatus === activityIndex ? !checked : checked
         ) 
-        : dayCheckPoint
+        : dayCheckPoints
       )
     )
   }
