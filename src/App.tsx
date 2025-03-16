@@ -57,7 +57,7 @@ export function App() {
     const { index } = activityEmojiToRemove
 
     setActivityEmojisDailyList(prevActivityList => 
-      prevActivityList.filter((_, targetEmoji) => targetEmoji !== index))
+      prevActivityList.filter((_, targetIndex) => targetIndex !== index))
 
     setDailyCheckPointActivityList(prevActivityList =>
       prevActivityList.map(dayCheckPoints => {
