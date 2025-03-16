@@ -11,13 +11,13 @@ dayjs.locale('pt-br')
 
 export function App() {
   const [ emojiPickerModal, setEmojiPickerModal ] = useState(false)
-  const [ activityDailyEmojisList, setActivityDailyEmojisList] = useState<string[]>([])
+  const [ activityEmojisDailyList, setActivityEmojisDailyList] = useState<string[]>([])
 
   const [ confirmDeleteActivityEmojiModal, setConfirmDeleteActivityEmojiModal ] = useState(false)
   const [ activityEmojiToRemove, setActivityEmojiToRemove ] = useState<{emoji: string, index: number} | null>(null)
 
   const [ dailyCheckPointActivityList, setDailyCheckPointActivityList ] = useState<boolean[][]>([])
-  const [ dailyDatesCheckPoint, setDailyDatesCheckPoint ] = useState<string[]>([])
+  const [ datesForDailyCheckPointsList, setDatesForDailyCheckPointsList ] = useState<string[]>([])
 
   const formattedDate = dayjs().format('DD/MM')
 
@@ -28,12 +28,12 @@ export function App() {
   function HandleAddActivityDailyEmojisList( emojiData: { emoji: string}) {
     const activityEmoji = emojiData.emoji
 
-    if(activityDailyEmojisList.includes(activityEmoji)) {
+    if(activityEmojisDailyList.includes(activityEmoji)) {
       alert('Parece que esta atividade já existe em sua lista.')
       return
     }
 
-    setActivityDailyEmojisList(prevActivityList => [...prevActivityList, activityEmoji])
+    setActivityEmojisDailyList(prevActivityList => [...prevActivityList, activityEmoji])
 
     setDailyCheckPointActivityList((prevCheckListActivities) =>
       prevCheckListActivities.map((dayCheckPoint) => [...dayCheckPoint, false])
@@ -56,7 +56,7 @@ export function App() {
 
     const { index } = activityEmojiToRemove
 
-    setActivityDailyEmojisList(prevActivityList => 
+    setActivityEmojisDailyList(prevActivityList => 
       prevActivityList.filter((_, targetEmoji) => targetEmoji !== index))
 
     setDailyCheckPointActivityList(prevActivityList =>
@@ -73,21 +73,21 @@ export function App() {
   }
 
   function HandleAddNewDailyActivityListCheckPoint() {
-    if(activityDailyEmojisList.length === 0 ) {
+    if(activityEmojisDailyList.length === 0 ) {
       alert('Primeiro crie uma lista de atividades.')
       return
     }
 
-    if(dailyDatesCheckPoint.includes(formattedDate)) {
+    if(datesForDailyCheckPointsList.includes(formattedDate)) {
       alert('Dia já adicionado a lista, você poderá adicionar outro dia amanhã.')
       return
     }
 
-    setDailyDatesCheckPoint(prevCheckList => [...prevCheckList, formattedDate])
+    setDatesForDailyCheckPointsList(prevCheckList => [...prevCheckList, formattedDate])
 
     setDailyCheckPointActivityList(prevCheckListActivities => [
       ...prevCheckListActivities,
-      activityDailyEmojisList.map(() => false)
+      activityEmojisDailyList.map(() => false)
     ])
   }
 
@@ -130,7 +130,7 @@ export function App() {
 
         <div className='flex items-center gap-8'>
           <div className='mt-12 flex flex-col gap-4'>
-            { activityDailyEmojisList.map((activity, index) => {
+            { activityEmojisDailyList.map((activity, index) => {
               return (
                 <button
                   key={index}
@@ -150,7 +150,7 @@ export function App() {
                 className='flex flex-col gap-4 items-center'
               >
                 <span className='font-medium text-2xl text-purple-200 hover:text-purple-100'>
-                  {dailyDatesCheckPoint[dayIndex]}
+                  {datesForDailyCheckPointsList[dayIndex]}
                 </span>
 
                 { checkpoints.map((checked, index) => {
