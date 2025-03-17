@@ -3,9 +3,10 @@ import { useState } from "react"
 import dayjs from "dayjs"
 import 'dayjs/locale/pt-br'
 
-import EmojiPicker from 'emoji-picker-react';
+import { Plus } from "lucide-react"
 
-import { Plus, X } from "lucide-react"
+import { EmojiPickerModal } from "./components/emoji-picker-modal"
+import { DeleteActivityEmojiModal } from "./components/delete-activity-emoji-modal"
 
 dayjs.locale('pt-br')
 
@@ -170,44 +171,17 @@ export function App() {
         </div>
 
         { emojiPickerModal && (
-          <div className='fixed inset-0 flex bg-neutral-950/50'>
-            <div className='m-auto bg-neutral-900 flex flex-col items-end'>
-              <button
-                onClick={ToggleEmojiPickerModal} 
-                className='text-purple-400 hover:text-purple-200'
-              >
-                <X/>
-              </button>
-
-              <EmojiPicker
-                onEmojiClick={HandleAddActivityDailyEmojisList}
-                theme='dark'
-              />
-            </div>
-          </div>
+          <EmojiPickerModal
+            ToggleEmojiPickerModal={ToggleEmojiPickerModal}
+            HandleAddActivityDailyEmojisList={HandleAddActivityDailyEmojisList}
+          />
         )}
 
         { confirmDeleteActivityEmojiModal && (
-          <div className='fixed inset-0 flex bg-neutral-950/50'>
-            <div className='m-auto flex flex-col items-center gap-3 px-3 py-1.5 rounded-xl bg-neutral-700'>
-              <span className='text-purple-300 font-bold'>Deseja excluir a atividade?</span>
-
-              <div className='flex items-center gap-3'>
-                <button
-                  onClick={HandleDeleteActivityEmoji}
-                  className='flex items-center gap-2 px-3 py-1.5 font-bold border rounded-xl border-purple-600 hover:border-purple-400 text-purple-400 hover:text-purple-200'
-                >
-                  Confirmar
-                </button>
-                <button
-                  onClick={ToggleActivityDeleteEmojiModal}
-                  className='flex items-center gap-2 px-3 py-1.5 font-bold border rounded-xl border-purple-600 hover:border-purple-400 text-purple-400 hover:text-purple-200'
-                >
-                  Cancelar
-                </button>
-              </div>
-            </div>
-          </div>
+          <DeleteActivityEmojiModal
+            HandleDeleteActivityEmoji={HandleDeleteActivityEmoji}
+            ToggleActivityDeleteEmojiModal={ToggleActivityDeleteEmojiModal}
+          />
         )}
       </div>
     </div>
