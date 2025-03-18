@@ -8,6 +8,11 @@ import { Plus } from "lucide-react"
 import { EmojiPickerModal } from "./components/emoji-picker-modal"
 import { DeleteActivityEmojiModal } from "./components/delete-activity-emoji-modal"
 
+import { Button } from './elements/button'
+import { ActivityEmoji } from './elements/activity-emoji'
+import { CheckPointDate } from './elements/check-point-date'
+import { ActivityCheckPoint } from './elements/activity-check-point'
+
 dayjs.locale('pt-br')
 
 export function App() {
@@ -111,21 +116,19 @@ export function App() {
           <img src="/icon/logo.svg" alt="App Logo" />
 
           <div className='space-y-3'>
-            <button 
+            <Button
               onClick={ToggleEmojiPickerModal}
-              className='flex items-center gap-2 px-3 py-1.5 font-bold border rounded-xl border-purple-600 hover:border-purple-400 text-purple-400 hover:text-purple-200'
             >
               <Plus/>
               Atividade
-            </button>
+            </Button>
 
-            <button
-              onClick={HandleAddNewDailyActivityListCheckPoint} 
-              className='flex items-center gap-2 px-3 py-1.5 font-bold border rounded-xl border-purple-600 hover:border-purple-400 text-purple-400 hover:text-purple-200'
+            <Button
+              onClick={HandleAddNewDailyActivityListCheckPoint}
             >
               <Plus/>
               Novo dia
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -133,13 +136,14 @@ export function App() {
           <div className='mt-12 flex flex-col gap-4'>
             { activityEmojisDailyList.map((activity, index) => {
               return (
-                <button
+                <ActivityEmoji
                   key={index}
-                  onClick={() => HandleSelectedActivityEmojiToDelete(activity, index)}
-                  className='flex items-center text-4xl'
+                  index={index}
+                  activityEmoji={activity}
+                  HandleSelectedActivityEmojiToDelete={HandleSelectedActivityEmojiToDelete}
                 >
                   {activity}
-                </button>
+                </ActivityEmoji>
               )
             })}
           </div>
@@ -150,19 +154,20 @@ export function App() {
                 key={dayIndex} 
                 className='flex flex-col gap-4 items-center'
               >
-                <span className='font-medium text-2xl text-purple-200 hover:text-purple-100'>
-                  {datesForDailyCheckPointsList[dayIndex]}
-                </span>
+                <CheckPointDate
+                  datesForDailyCheckPointsList={datesForDailyCheckPointsList}
+                  dayIndex={dayIndex}
+                />
 
                 { checkpoints.map((checked, index) => {
                   return (
-                    <button
+                    <ActivityCheckPoint
                       key={index}
-                      onClick={() => HandleCheckActivityStatus(dayIndex, index)}
-                      className={`h-12 w-12  border rounded-xl border-neutral-500 hover:border-neutral-400 
-                      ${checked ? 'bg-purple-600 border-purple-400 hover:bg-purple-400 hover:border-pink-200' : ''} `}
-                    >
-                    </button>
+                      HandleCheckActivityStatus={HandleCheckActivityStatus}
+                      dayIndex={dayIndex}
+                      index={index}
+                      checked={checked}
+                    />
                   )
                 }) }
               </div>
