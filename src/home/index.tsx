@@ -5,15 +5,15 @@ import 'dayjs/locale/pt-br'
 
 import { Plus } from "lucide-react"
 
-import { SplashAnimation } from "./components/splash-animation"
+import { SplashAnimation } from "../components/splash-animation"
 
-import { EmojiPickerModal } from "./components/emoji-picker-modal"
-import { DeleteActivityEmojiModal } from "./components/delete-activity-emoji-modal"
+import { EmojiPickerModal } from "../components/emoji-picker-modal"
+import { DeleteActivityEmojiModal } from "../components/delete-activity-emoji-modal"
 
-import { Button } from './elements/button'
-import { ActivityEmoji } from './elements/activity-emoji'
-import { CheckPointDate } from './elements/check-point-date'
-import { ActivityCheckPoint } from './elements/activity-check-point'
+import { Button } from '../elements/button'
+import { ActivityEmoji } from '../elements/activity-emoji'
+import { CheckPointDate } from '../elements/check-point-date'
+import { ActivityCheckPoint } from '../elements/activity-check-point'
 
 dayjs.locale('pt-br')
 
