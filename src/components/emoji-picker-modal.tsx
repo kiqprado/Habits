@@ -1,4 +1,5 @@
-import EmojiPicker from 'emoji-picker-react';
+import EmojiPicker from 'emoji-picker-react'
+import { Theme } from 'emoji-picker-react'
 
 import { X } from 'lucide-react';
 
@@ -24,7 +25,7 @@ export function EmojiPickerModal({
 
         <EmojiPicker
           onEmojiClick={HandleAddActivityDailyEmojisList}
-          theme='dark'
+          theme={Theme.DARK}
         />
       </div>
     </div>
