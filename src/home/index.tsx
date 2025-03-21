@@ -69,14 +69,21 @@ export function App() {
     setActivityEmojisDailyList(prevActivityList => 
       prevActivityList.filter((_, targetIndex) => targetIndex !== index))
 
-    setDailyCheckPointActivityList(prevActivityList =>
-      prevActivityList.map(dayCheckPoints => {
-        if (dayCheckPoints.length > 1) {
-          return dayCheckPoints.filter((_, checkPointIndex) => checkPointIndex !== index)
-        }
-        return []
-      })
-    )
+    setDailyCheckPointActivityList(prevActivityList => {
+      const updatedCheckPointsActivityList = prevActivityList.map(
+        dayCheckPoints => dayCheckPoints.length > 1 
+          ? 
+            dayCheckPoints.filter((_, checkPointIndex) => checkPointIndex !== index)
+          : 
+            []
+      )
+
+      setDatesForDailyCheckPointsList(prevDates => prevDates.filter(
+        (_, dayIndex) => updatedCheckPointsActivityList[dayIndex].length > 0
+      ))
+
+      return updatedCheckPointsActivityList
+    })
 
     setActivityEmojiToRemove(null)
     ToggleActivityDeleteEmojiModal()
