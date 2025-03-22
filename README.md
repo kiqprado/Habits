@@ -1,54 +1,148 @@
-# React + TypeScript + Vite
+# Habits
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Master Your Routine, Optimize Your Time and Build Better Habits with Smart Checkpoints*
 
-Currently, two official plugins are available:
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://shields.io/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## Table of Contents
+1. [About the Project](#about-the-project)
+2. [Tecs](#tecs)
+3. [Key Features](#key-features)
+4. [Installation](#installation)
+5. [Usage](#usage)
+6. [Project Structure](#project-structure)
+7. [Contributing](#contributing)
+8. [License](#license)
+9. [Authors and Acknowledgments](#authors-and-akcnowledgments)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## About the Project
+
+**Habits**</br>
+**Your Personal Guide to Smarter Routines, Better Habits and a More Balanced Life** 
+<div style="text-align: justify"> 
+Thats more than an app—it’s your partner in achieving daily success. Whether it’s work deadlines, personal goals, or moments of relaxation, FlowTrack helps you organize, prioritize, and thrive. With strategic checkpoints and a user-friendly design, you’ll not only manage your time but also cultivate habits that lead to long-term growth and well-being. Transform the way you approach your day, one task at a time.
+<div/>
+
+### why did we create Habits?
+- To simplify your life.
+- To empower your time management.
+- To build lasting habits.
+- To make productivity enjoyable
+
+#### Now that you know, hope you enjoy it! [Habits](https://habitsup.netlify.app/)
+
+---
+
+## Tecs
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
+---
+
+## Key Features
+
+- Provides a personalized activities by emojis.
+- Offers checkpoints to easy handle.
+- Helps you achieve your daily goals in your routine.
+
+---
+
+## Installation
+
+> **Prerequisites**
+> Make sure to install [Node.js](https://nodejs.org/) installed on your machine.
+
+1. Clone this repository:
+  ```bash
+  git clone https://github.com/kiqprado/Habits
+  ```
+2. Navigate to project directory
+  ```bash
+  cd Habits
+  ```
+3. Install the dependencies
+  ```bash
+  npm i
+  ```
+
+---
+
+## Usage
+
+1. On your terminal
+
+2. Run the project
+  ```
+  npm run dev
+  ```
+3. Open your IDE (VSCode for ex)
+  ```
+  code .
+  ```
+
+---
+
+## Project Structure
+
+```sh
+└── Focus/
+    ├── src
+    │   ├── components
+    │   │   ├── delete-activity-emoji
+    │   │   ├── emoji-picker-modal
+    │   │   └── splash-animation   
+    │   ├── elements
+    │   │   ├── activity-check-point
+    │   │   ├── activity-emoji
+    │   │   ├── button
+    │   │   └── check-point-date  
+    │   └── home
+    │   │   └── index  
+    ├── index.css
+    └── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Contributing
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Contributing are welcome!
+To do this, follow these steps:
+
+1. Fork the rep.
+2. Create a new branch for your feature/bugfix:
+  ```bash
+  git checkout -b my-feature
+  ```
+3. Make your changes and commit then:
+  ```
+  git commit -m "Add new feature"
+  ```
+4. Push to your fork
+  ```bash
+  git push origin my-feature
+  ```
+5. Open a Pull request on this Rep.
+
+---
+
+## License
+
+This project is licensed under the MIT License.[LICENSE](LICENSE)
+
+## Authors and Acknowledgments
+
+-**@kiqprado** - *Creator of this version and Maintainer*
+[Github](https://github.com/kiqprado) | [LinkedIn](https://www.linkedin.com/in/kaiqueprado/)
+
+-**@Rocektseat** - *Initial creator of this project*
+[Rocketseat](https://www.rocketseat.com.br/) | [LinkedIn](https://www.linkedin.com/school/rocketseat)
+
+-*A big thank you to RocketSeat for creating the project with the initial stacks of a Web Dev. In this version, I chose the technologies I have an affinity for to reinvent some functions and, according to my vision, create this project to help people on their study journeys.*
