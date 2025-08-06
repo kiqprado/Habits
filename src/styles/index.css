@@ -15,4 +15,17 @@ button {
   cursor: pointer;
 }
 
+.text-shadow-glow {
+  text-shadow: 
+    0 0 2px #c084fc, 
+    0 0 4px #a855f7, 
+    0 0 8px #9333ea;
+}
+
+.shadow-purple-subtle {
+  box-shadow:
+    0 4px 6px rgba(220, 219, 224, 0.25),
+    3px 3px 6px rgba(23, 23, 23, 0.4);
+}
+
 
