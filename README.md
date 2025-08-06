@@ -1,6 +1,5 @@
 # Habits
-
-*Master Your Routine, Optimize Your Time and Build Better Habits with Smart Checkpoints*
+*Your Habits. Your Goals. Our Power.*
 
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://shields.io/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -27,6 +26,8 @@
 <div style="text-align: justify"> 
 Thats more than an app—it’s your partner in achieving daily success. Whether it’s work deadlines, personal goals, or moments of relaxation, FlowTrack helps you organize, prioritize, and thrive. With strategic checkpoints and a user-friendly design, you’ll not only manage your time but also cultivate habits that lead to long-term growth and well-being. Transform the way you approach your day, one task at a time.
 <div/>
+
+*Master Your Routine, Optimize Your Time and Build Better Habits with Smart Checkpoints*
 
 ### why did we create Habits?
 - To simplify your life.
