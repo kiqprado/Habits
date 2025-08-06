@@ -27,7 +27,7 @@ export function App() {
   const [ activityEmojiToRemove, setActivityEmojiToRemove ] = useState<{emoji: string, index: number} | null>(null)
 
   const [ datesForDailyCheckPointsActivityList, setDatesForDailyCheckPointsActivityList ] = useState<boolean[][]>([])
-  const [ matrixForDatesDailyCheckPointsList, setMatrixForDatesDailyheckPointsList ] = useState<string[]>([])
+  const [ matrixForDatesDailyCheckPointsList, setMatrixForDatesDailyCheckPointsList ] = useState<string[]>([])
 
   const [ splashScreenOnLoading, setSplashScreenOnLoading ] = useState(true)
 
@@ -90,7 +90,7 @@ export function App() {
             []
       )
 
-      setMatrixForDatesDailyheckPointsList(prevDates => prevDates.filter(
+      setMatrixForDatesDailyCheckPointsList(prevDates => prevDates.filter(
         (_, dayIndex) => updatedCheckPointsActivityList[dayIndex].length > 0
       ))
 
@@ -112,7 +112,7 @@ export function App() {
       return
     }
 
-    setMatrixForDatesDailyheckPointsList(prevCheckList => [...prevCheckList, formattedDate])
+    setMatrixForDatesDailyCheckPointsList(prevCheckList => [...prevCheckList, formattedDate])
 
     setDatesForDailyCheckPointsActivityList(prevCheckListActivities => [
       ...prevCheckListActivities,
@@ -155,7 +155,7 @@ export function App() {
 
         setActivityEmojisDailyList(activityEmojisDailyList || [])
         setDatesForDailyCheckPointsActivityList(datesForDailyCheckPointsActivityList || [])
-        setMatrixForDatesDailyheckPointsList(matrixForDatesDailyCheckPointsList || [])
+        setMatrixForDatesDailyCheckPointsList(matrixForDatesDailyCheckPointsList || [])
       } catch(err) {
         console.error('Error to Fetch Cache Data on App:', err)
       }
