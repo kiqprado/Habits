@@ -133,13 +133,43 @@ export function App() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
+    const dataItemsToCache = {
+      activityEmojisDailyList,
+      datesForDailyCheckPointsActivityList,
+      matrixForDatesDailyCheckPointsList
+    }
+
+    localStorage.setItem('dailyActivityCache', JSON.stringify(dataItemsToCache))
+  }, [activityEmojisDailyList, datesForDailyCheckPointsActivityList, matrixForDatesDailyCheckPointsList])
+
+  useEffect(() => {
+    const cache = localStorage.getItem('dailyActivityCache')
+
+    if(cache) {
+      try {
+        const {
+          activityEmojisDailyList,
+          datesForDailyCheckPointsActivityList,
+          matrixForDatesDailyCheckPointsList
+        } = JSON.parse(cache)
+
+        setActivityEmojisDailyList(activityEmojisDailyList || [])
+        setDatesForDailyCheckPointsActivityList(datesForDailyCheckPointsActivityList || [])
+        setMatrixForDatesDailyheckPointsList(matrixForDatesDailyCheckPointsList || [])
+      } catch(err) {
+        console.error('Error to Fetch Cache Data on App:', err)
+      }
+    }
+
+    const splashTimeOut = setTimeout(() => {
       setSplashScreenOnLoading(false)
     }, 5300)
+
+    return () => clearTimeout(splashTimeOut)
   }, [])
 
   return (
-    <div className='h-screen flex relative'>
+    <div className='h-svh flex relative'>
       { splashScreenOnLoading ? (
         <SplashAnimation/>
       ) : (
